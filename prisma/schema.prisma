@@ -16,8 +16,7 @@ model user{
   password String
   email String @unique
   blogs blog[]
-  // roles String[] @default(["user","admin"])
-  roles  Role @default(user)
+  roles  Role
 }
 
 enum Role {
@@ -25,10 +24,6 @@ enum Role {
   Admin
 }
 
-// enum String {
-//   user
-//   Admin
-// }
 
 model blog{
 id String @id @default(uuid())

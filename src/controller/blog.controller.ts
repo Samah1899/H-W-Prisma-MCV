@@ -79,10 +79,10 @@ export const updateblog=async(req:Request,res:Response)=>{
 
     try{
         let blogss=req.body
-        let {id}=req.params
+        // let {id}=req.params
         let blogs=await prisma.blog.updateMany({
             where: {
-              user_id:id
+              user_id:res.locals.user.id
             },
 
             data:blogss  
@@ -123,10 +123,10 @@ export const deleteallblog=async(req:Request,res:Response)=>{
 export const deleteoneblog=async(req:Request,res:Response)=>{
 
     try{
-        let {id}=req.params
+        // let {id}=req.params
         let blogs=await prisma.blog.delete({
             where:{
-            id
+            id:res.locals.user.id
             }   
         })
         console.log(blogs);
